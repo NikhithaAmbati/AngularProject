@@ -1,0 +1,19 @@
+<h2>User Details</h2>
+<div class="container">
+    <table>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Role</th>
+            </tr>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{user.Username}}</td>
+                <td>{{user.Email}}</td>
+                <td>{{user.Contact}}</td>
+                <td>{{user.Role}}</td>
+            </tr>
+        </tbody>
+    </table>  
+</div>
