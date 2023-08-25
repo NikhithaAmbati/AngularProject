@@ -1,4 +1,9 @@
-<router-outlet *ngIf = "loginflag"></router-outlet>
-<button class="a" (click) = "loginclick()"> Login </button>
-<button  (click) = "dashboardclick()"> Dashboard </button>
-<router-outlet  *ngIf = "dashflag"></router-outlet>
+<br><div class="avail">
+
+    <button class="btn1" (click)="loginPage()" >Click to Login</button>
+    
+    <button class="btn2" (click)="dashboardPage()" >Click here to Dashboard</button>
+    
+    </div>
+    <router-outlet></router-outlet>
+    

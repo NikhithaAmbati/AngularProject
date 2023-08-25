@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
+
 import { Router } from '@angular/router';
-import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -9,26 +9,11 @@ import { NgIf } from '@angular/common';
 })
 export class AppComponent {
   title = 'Project1';
-  loginflag : boolean = false ;
-  dashflag : boolean = false ;
-  
-  constructor(private router : Router)
-  {
-
+  constructor(private router:Router){}
+  loginPage(){
+    this.router.navigate(['login']);
   }
-
-  loginclick()
-  {
-     this.loginflag = true;
-     this.dashflag = false;
-     this.router.navigate(['login']);
+  dashboardPage(){
+    this.router.navigate(['dashboard']);
   }
-  
-  dashboardclick()
-  {
-     this.loginflag = false;
-     this.dashflag = true;
-     this.router.navigate(['dashboard']);
-  }
- 
 }
