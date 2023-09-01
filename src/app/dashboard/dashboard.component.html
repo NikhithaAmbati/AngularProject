@@ -1,23 +1,40 @@
-<br><h2>Dashboard</h2>
-<div class="dbpage">
-    <table  mat-table [dataSource]="values" class="mat-elevation-z8" dbTable>
-        <ng-container matColumnDef="position">
-            <th mat-header-cell *matHeaderCellDef> Index </th>
-            <td mat-cell *matCellDef="let element;let i=index"> {{i}} </td>
-
-        </ng-container>
-
-        <ng-container matColumnDef="value">
-            <th mat-header-cell *matHeaderCellDef> Value </th>
-            <td mat-cell *matCellDef="let element"> {{element}} </td>
-
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table><br><br>
-<div class="input">
-<input [(ngModel)]="newValue" placeholder="new Value">
-<button mat-raised-button (click)="addValue()">Add Value</button>
-</div>
-</div>
+<div class="todoList">
+    <table mat-table [dataSource]="values" class="mat-elevation-z8" dbtable>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Value </th>
+        <td mat-cell *matCellDef="let value; let i = index">
+          <ng-container *ngIf="editId !== value.id; else editCell">
+            {{ value.name }}
+          </ng-container>
+          <ng-template #editCell>
+            <input type="text" [(ngModel)]="updatedValue">
+          </ng-template>
+        </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let value">
+          <ng-container *ngIf="editId !== value.id; else editButtonCell">
+        
+              <button mat-button color="primary" (click)="editValue(value.id)">Edit</button>
+          </ng-container>
+          <ng-template #editButtonCell>
+        
+                <button mat-button color="warn" (click)="updateValue(value.id)">Done</button>
+         
+          </ng-template>
+         
+            <button mat-button color="warn" (click)="deleteValue(value.id)">Delete</button>
+         
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let value; columns: displayedColumns;"></tr>
+    </table>
+    <div class="input">
+      <input matInput [(ngModel)]="newValue" placeholder="Add new Value">
+      <button mat-raised-button (click)="addValue()">Add Value</button>
+    </div>
+  </div>

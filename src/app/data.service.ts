@@ -4,22 +4,24 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DataService {
+ 
+ // addData: any;
 
   constructor() { }
 
-  private values:string[]=['Nikhitha','Ayesha','Deepthi','Lahari','Teja'];
+  //private values:string[]=['Nikhitha','Ayesha','Deepthi','Lahari','Teja'];
 
   private validCredentials=[
     {Username:'FirstUser',Password:'pwOne'},
     {Username:'SecondUser',Password:'pwTwo'},
     {Username:'ThirdUser',Password:'pwThree'},
   ];
-  getValues():string[]{
+  /*getValues():string[]{
     return this.values;
   }
   addValue(value:string):void{
     this.values.push(value);
-  }
+  }*/
 
   authenticate(username:string,password:string):boolean{
     const validUser=this.validCredentials.find(
